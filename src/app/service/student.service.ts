@@ -9,12 +9,17 @@ import {StudentDto} from "../models/api/StudentDto";
 export class StudentService {
 
 
-  private url ="http://localhost:8080/api/v1/all"
+  private url ="http://localhost:8080"
   constructor(private http:HttpClient) { }
 
   getStudents():Observable<StudentDto[]>{
-    return  this.http.get<StudentDto[]>(this.url).pipe(catchError(this.handleError))
+    return  this.http.get<StudentDto[]>(this.url+"/api/v1/all").pipe(catchError(this.handleError))
 
+  }
+
+  addStudent(studentDto : StudentDto):Observable<StudentDto>{
+
+    return  this.http.post<StudentDto>(this.url+"/api/v1/add", studentDto).pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse) {

@@ -1,0 +1,30 @@
+<h1>New Student</h1>
+<div class="form-container">
+  <p>
+    <label for="first-name">First Name</label>
+    <input name="first-name" type="text" id="first-name" [(ngModel)]="firstNameValue">
+  </p>
+  <p>
+    <label for="last-name">Last Name</label>
+    <input name="last-name" type="text" id="last-name" [(ngModel)]="lastNameValue">
+  </p>
+  <p>
+    <label for="email">Email</label>
+    <input name="email" type="text" id="email"[(ngModel)]="emailValue">
+  </p>
+  <p>
+  <label for="age">Age</label>
+  <input name="age" type="text" id="age" [(ngModel)]="ageValue">
+</p>
+  <p>
+    <label for="adress">Adress</label>
+    <input name="adress" type="text" id="adress" [(ngModel)]="adressValue">
+  </p>
+
+  <p (click)="save()">
+    <a class="button" >save</a>
+  </p>
+  <p>
+    <a class="button" >Cancel</a>
+  </p>
+</div>

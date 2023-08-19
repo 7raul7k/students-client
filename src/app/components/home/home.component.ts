@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {StudentService} from "../service/student.service";
-import {StudentDto} from "../models/api/StudentDto";
+import {StudentService} from "../../service/student.service";
+import {StudentDto} from "../../models/api/StudentDto";
 
 @Component({
   selector: 'app-home',
