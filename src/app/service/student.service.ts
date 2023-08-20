@@ -22,6 +22,20 @@ export class StudentService {
     return  this.http.post<StudentDto>(this.url+"/api/v1/add", studentDto).pipe(catchError(this.handleError));
   }
 
+  updateStudent(studentDTO : StudentDto):Observable<StudentDto>{
+
+    return this.http.put<StudentDto>(this.url +"/api/v1/update",studentDTO)
+  }
+
+  getStudentById(id : number):Observable<StudentDto>{
+
+    return this.http.get<StudentDto>(this.url +`/api/v1/getStudentById?id=${id}`);
+  }
+
+  deleteStudent(email : String):Observable<String>{
+
+    return this.http.delete<String>(this.url + `/api/v1/delete?email=${email}`);
+  }
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);

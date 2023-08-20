@@ -28,3 +28,9 @@
     <a class="button" >Cancel</a>
   </p>
 </div>
+
+
+ <div *ngIf="messages.length>0">
+   <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
+
+ </div>
