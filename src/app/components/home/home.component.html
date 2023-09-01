@@ -1,26 +1,49 @@
+
+
+
 <h1>Books</h1>
 <p><a  class="button" routerLink="/add">Add new customer</a></p>
-<table>
-  <thead>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Age</th>
-    <th>Adress</th>
-    <th>Email</th>
-  </tr>
-  </thead>
-  <tbody>
 
-  <tr *ngFor="let student of students">
-    <td (click)="navigateToUpdate(student)">
-      <a>{{student.firstName}}</a>
-    </td>
-    <td>{{student.lastName}}</td>
-    <td>{{student.age}}</td>
-    <td>{{student.adress}}</td>
-    <td>{{student.email}}</td>
-  </tr>
 
-  </tbody>
-</table>
+
+<div>
+  <h2>Loading State Example</h2>
+
+  <div *ngIf="(loadingState$ | async) === LoadingState.Loading; else loadedState">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <ng-template #loadedState>
+    <ng-container *ngIf="(loadingState$ | async) === LoadingState.Success;  else errorState">
+      <table>
+        <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Adress</th>
+          <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let student of students">
+          <td (click)="navigateToUpdate(student)">
+            <a>{{student.firstName}}</a>
+          </td>
+          <td>{{student.lastName}}</td>
+          <td>{{student.age}}</td>
+          <td>{{student.adress}}</td>
+          <td>{{student.email}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+
+    </ng-container>
+  </ng-template>
+
+  <ng-template #errorState>
+    <div class="error-message">Error: eroare la incarcare</div>
+  </ng-template>
+</div>

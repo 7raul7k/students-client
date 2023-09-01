@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import {StudentDto} from "../models/api/StudentDto";
-
+import {LoadingState} from "src/app/models/LoadingState.enum";
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
+   loadingStateSubject$ = new BehaviorSubject<LoadingState>(LoadingState.Idle);
 
 
-  private url ="http://localhost:8080"
+
+  private url ="http://localhost:8080";
   constructor(private http:HttpClient) { }
 
   getStudents():Observable<StudentDto[]>{
-    return  this.http.get<StudentDto[]>(this.url+"/api/v1/all").pipe(catchError(this.handleError))
+    this.loadingStateSubject$.next(  LoadingState.Loading);
+    return  this.http.get<StudentDto[]>(this.url+"/api/v1/all")
+      .pipe(catchError(this.handleError));
 
   }
 

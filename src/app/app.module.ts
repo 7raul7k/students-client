@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import { MessagesModule } from 'primeng/messages';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { UpdateComponent } from './components/update/update.component';
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 @NgModule({
   declarations: [
@@ -23,9 +24,12 @@ import { UpdateComponent } from './components/update/update.component';
     HttpClientModule,
     FormsModule,
     MessagesModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

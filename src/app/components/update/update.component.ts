@@ -90,7 +90,7 @@ export class UpdateComponent implements OnInit,OnDestroy{
       }
     })
   }
-
+//loading request-succes request-failed
 
 
 
