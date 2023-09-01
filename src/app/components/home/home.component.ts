@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StudentService} from "../../service/student.service";
 import {StudentDto} from "../../models/api/StudentDto";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -34,7 +35,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     })
   }
 
-  constructor(private studentService: StudentService) {
+  constructor(private studentService: StudentService ,private router: Router){
+  }
+  navigateToUpdate(student:any) {
+    this.router.navigate(['/update', student.id]);
+
+
   }
 
 

@@ -1,5 +1,5 @@
 <h1>Books</h1>
-<p><a class="button" href="new_book.html">Create New Student</a></p>
+<p><a  class="button" routerLink="/add">Add new customer</a></p>
 <table>
   <thead>
   <tr>
@@ -13,7 +13,7 @@
   <tbody>
 
   <tr *ngFor="let student of students">
-    <td>
+    <td (click)="navigateToUpdate(student)">
       <a>{{student.firstName}}</a>
     </td>
     <td>{{student.lastName}}</td>

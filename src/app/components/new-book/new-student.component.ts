@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StudentService} from "../../service/student.service";
 import {StudentDto} from "../../models/api/StudentDto";
 import {Message} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-book',
@@ -24,13 +25,12 @@ export class NewStudentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.messages = [{ severity: 'success', summary: 'Success', detail:  'Message Content' },
-      { severity: 'error', summary: 'Error', detail: 'Message Content' }
+    this.messages = [
     ];
 
   }
 
-  constructor(private studentService : StudentService) {
+  constructor(private studentService : StudentService,private router: Router) {
   }
 
 
@@ -53,14 +53,20 @@ export class NewStudentComponent implements OnInit, OnDestroy {
 
             next:(data)=>{
               this.messages.push( { severity: 'success', summary: 'Success', detail: 'Student was added' });
+
+              this.router.navigate(['/']);
             },
             complete:()=>{
+
+
 
             },
             error:(err)=>{
               alert(err);
             }
           });
+
+
         }
 
 
