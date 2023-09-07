@@ -1,0 +1,37 @@
+<h1>Update Book</h1>
+<form>
+  <p>
+    <label for="first-name">First Name</label>
+    <input name="first-name" type="text" id="first-name" [(ngModel)]="student.firstName">
+  </p>
+  <p>
+    <label for="last-name">Last Name</label>
+    <input name="last-name" type="text" id="last-name" [(ngModel)]="student.lastName">
+  </p>
+  <p>
+    <label for="email">Email</label>
+    <input name="email" type="text" id="email" [(ngModel)]="student.email">
+  </p>
+  <p>
+    <label for="age">Age</label>
+    <input name="age" type="text" id="age" [(ngModel)]="student.age">
+  </p>
+  <p>
+    <label for="address">Address</label>
+    <input name="address" type="text" id="address" [(ngModel)]="student.adress">
+  </p>
+  <p>
+    <input (click)="updateStudent()" type="submit" value="Update Student">
+  </p>
+</form>
+<form method="post"  onsubmit="return confirm('Do you really want to delete this student?');">
+  <p>
+    <a class="button" routerLink="/" >Cancel</a>
+  </p>
+  <p><input (click)="deleteStudent()" type="submit" value="Delete Student"></p>
+</form>
+
+<div *ngIf="messages.length>0">
+  <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
+
+</div>

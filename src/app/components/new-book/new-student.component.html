@@ -25,6 +25,12 @@
     <a class="button" >save</a>
   </p>
   <p>
-    <a class="button" >Cancel</a>
+    <a class="button" routerLink="/" >Cancel</a>
   </p>
 </div>
+
+
+ <div *ngIf="messages.length>0">
+   <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
+
+ </div>
